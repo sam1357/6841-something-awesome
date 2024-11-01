@@ -1,5 +1,5 @@
 import Navbar from "@/components/Navbar";
-import { Providers } from "./providers";
+import { Provider } from "@/components/ui/provider";
 import { Box } from "@chakra-ui/react";
 
 export default function RootLayout({
@@ -8,16 +8,16 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <body>
-        <Providers>
+        <Provider>
           <Navbar />
           <main>
-            <Box p={4} maxW="100vw" maxH="100vh">
+            <Box maxW="100vw" maxH="100vh">
               {children}
             </Box>
           </main>
-        </Providers>
+        </Provider>
       </body>
     </html>
   );
