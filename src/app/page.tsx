@@ -1,7 +1,6 @@
 "use client";
 
 import {
-  VStack,
   Text,
   Center,
   Card,
@@ -11,23 +10,21 @@ import {
   Box,
   Flex,
   Separator,
+  LinkOverlay,
 } from "@chakra-ui/react";
+import { MdTipsAndUpdates } from "react-icons/md";
 import { FaBrain, FaCode, FaPencilAlt } from "react-icons/fa";
+import { LuExternalLink } from "react-icons/lu";
 
 type cardDetail = {
   title: string;
   description: string;
   icon: JSX.Element;
   href: string;
+  isExternal?: boolean;
 };
 
 const cardDetails: cardDetail[] = [
-  {
-    title: "Challenges & Writeups",
-    description: "Details of the challenges I have completed and the writeups",
-    icon: <FaPencilAlt size="30px" color="green" />,
-    href: "/challenges",
-  },
   {
     title: "Reflections",
     description:
@@ -36,10 +33,24 @@ const cardDetails: cardDetail[] = [
     href: "/reflections",
   },
   {
-    title: "Hack the Box",
-    description: "Try out the challenges yourself!",
-    icon: <FaCode size="30px" color="blue" />,
-    href: "https://app.hackthebox.com/",
+    title: "Challenges & Writeups",
+    description: "Details of the challenges I have completed and the writeups",
+    icon: <FaPencilAlt size="30px" color="green" />,
+    href: "/challenges",
+  },
+  {
+    title: "Methodology and Tips",
+    description:
+      "Learn more about the overall methodology I went about doing these challenges, and tips and tricks for solving these for yourself",
+    icon: <MdTipsAndUpdates size="30px" color="purple" />,
+    href: "/method",
+  },
+  {
+    title: "Try it yourself!",
+    description: "Complete some Hack the Box challenges for yourself!",
+    icon: <FaCode size="30px" color="orange" />,
+    href: "https://app.hackthebox.com",
+    isExternal: true,
   },
 ];
 
@@ -53,20 +64,21 @@ function Cards() {
           pb={6}
           w="100%"
           shadow="lg"
-          _hover={{ background: "gray.100" }}
-          cursor="pointer"
-          onClick={() => {
-            if (card.href) {
-              window.location.href = card.href;
-            }
-          }}
+          _hover={{ background: "teal.muted" }}
         >
+          <LinkOverlay
+            href={card.href}
+            target={card.isExternal ? "_blank" : "_self"}
+          />
           <Card.Header>
             <HStack gap={4}>
               {card.icon}
               <Flex direction="column" gap={0}>
-                <Heading size="xl">{card.title}</Heading>
-                <Text fontSize="md" color="gray.600" fontWeight={100}>
+                <HStack>
+                  <Heading size="xl">{card.title}</Heading>
+                  {card.isExternal && <LuExternalLink />}
+                </HStack>
+                <Text fontSize="md" color="gray.100" fontWeight={100}>
                   {card.description}
                 </Text>
               </Flex>
@@ -80,8 +92,8 @@ function Cards() {
 
 export default function Home() {
   return (
-    <Center w="100%">
-      <VStack maxW="50%">
+    <Center w="100%" p={4}>
+      <Flex maxW={{ md: "90%", xl: "50%" }} direction="column" gap={2}>
         <Text fontSize="2xl" fontWeight={600}>
           Welcome to Sam's (z5418112) Something Awesome COMP6841 Project!
         </Text>
@@ -97,14 +109,17 @@ export default function Home() {
         <Text fontSize="lg" fontWeight={400}>
           The reason why I chose to do web challenges for my Something Awesome
           Project is because I wanted to learn more about web security and how
-          to exploit web vulnerabilities. It's something that we interact with
-          everyday, so I thought it would be interesting to learn more about how
-          engineers can and should protect their web applications.
+          to exploit web vulnerabilities.
+        </Text>
+        <Text fontSize="lg" fontWeight={400}>
+          It's something that we interact with everyday, so I thought it would
+          be interesting to learn more about how engineers can and should
+          protect their web applications.
         </Text>
         <Separator />
         <Box py={2}></Box>
         <Cards />
-      </VStack>
+      </Flex>
     </Center>
   );
 }
