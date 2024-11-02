@@ -7,6 +7,7 @@ import {
   Stack,
   Heading,
   HStack,
+  Link,
   Box,
   Flex,
   Separator,
@@ -119,6 +120,20 @@ export default function Home() {
         <Separator />
         <Box py={2}></Box>
         <Cards />
+        <Separator />
+        <Text
+          fontSize="sm"
+          fontWeight={200}
+          fontStyle="italic"
+          color="gray.400"
+        >
+          The idea of this project was heavily inspired by Jason Liu's{" "}
+          <Link href="https://stegosaurus21.github.io/6841-hack-the-web/">
+            project <LuExternalLink />
+          </Link>
+          . However all write-ups, challenges, reflections as well we this
+          website are my own.
+        </Text>
       </Flex>
     </Center>
   );

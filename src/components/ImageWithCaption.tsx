@@ -3,7 +3,7 @@ import React from "react";
 
 interface ImageWithCaptionProps extends BoxProps {
   imagePath: string;
-  caption: string;
+  caption?: string;
   imageProps?: ImageProps;
 }
 
