@@ -1,17 +1,6 @@
 "use client";
 
-import {
-  VStack,
-  Text,
-  Center,
-  Separator,
-  AccordionItem,
-  AccordionItemContent,
-  AccordionItemTrigger,
-  AccordionRoot,
-} from "@chakra-ui/react";
-import { WriteupInfo } from "@/writeups";
-import { Tags } from "@/components/Tags";
+import { VStack, Text, Center } from "@chakra-ui/react";
 
 export default function Reflections() {
   return (

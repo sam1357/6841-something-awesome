@@ -2,7 +2,6 @@ import {
   Stack,
   Code,
   Text,
-  Heading,
   AccordionItem,
   AccordionItemContent,
   AccordionItemTrigger,

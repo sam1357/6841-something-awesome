@@ -8,7 +8,6 @@ import {
 import { FaFish } from "react-icons/fa";
 import { FaArrowsTurnToDots, FaCode } from "react-icons/fa6";
 import React from "react";
-import { BiCode } from "react-icons/bi";
 
 export enum AccordionType {
   RED_HERRING,

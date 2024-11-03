@@ -14,7 +14,7 @@ import { FaDatabase, FaLock } from "react-icons/fa";
 import { MdWarning } from "react-icons/md";
 import { SiKnowledgebase } from "react-icons/si";
 import { WriteupType } from "./";
-import { Hard, JavaScript, Python, XSS, RCE, SSTI, SSRF } from "./tags";
+import { Hard, JavaScript, Python, RCE, SSTI, SSRF } from "./tags";
 import { ImageWithCaption } from "@/components/ImageWithCaption";
 import { Codeblock } from "@/components/Codeblock";
 import CustomAccordion, { AccordionType } from "@/components/CustomAccordion";
