@@ -5,6 +5,7 @@ import { Box, Flex, HStack, IconButton, Link, Text } from "@chakra-ui/react";
 import { usePathname } from "next/navigation";
 import { GiHamburgerMenu } from "react-icons/gi";
 import { IoCloseOutline } from "react-icons/io5";
+import { ColorModeButton } from "./ui/color-mode";
 
 type Link = {
   name: string;
@@ -57,7 +58,11 @@ export default function Navbar() {
   };
 
   return (
-    <Box px={4} backgroundColor="teal.900" justifyContent="center">
+    <Box
+      px={4}
+      backgroundColor={{ base: "gray.muted", _dark: "teal.900" }}
+      justifyContent="center"
+    >
       <Flex h={16} alignItems={"center"} justifyContent={"space-between"}>
         <HStack gap={8} alignItems={"center"}>
           <IconButton
@@ -65,14 +70,14 @@ export default function Navbar() {
             onClick={toggleMenu}
             px={3}
             rounded="xl"
-            display={{ base: "block", md: "none" }}
+            display={{ base: "block", lg: "none" }}
             variant="ghost"
             colorPalette="teal"
             _hover={{ bg: "teal.muted" }}
           >
             {isMenuOpen ? <IoCloseOutline /> : <GiHamburgerMenu />}
           </IconButton>
-          <HStack as={"nav"} gap={4} display={{ base: "none", md: "flex" }}>
+          <HStack as={"nav"} gap={4} display={{ base: "none", lg: "flex" }}>
             {Links.map((link) => (
               <NavLink
                 key={link.name}
@@ -82,20 +87,24 @@ export default function Navbar() {
             ))}
           </HStack>
         </HStack>
-        <Text
-          fontSize="lg"
-          fontWeight={600}
-          display={{ base: "none", md: "block" }}
-        >
-          COMP6841 Something Awesome
-        </Text>
+        <HStack gap={4}>
+          <Text
+            fontSize="lg"
+            pb={1}
+            fontWeight={600}
+            display={{ base: "none", sm: "block" }}
+          >
+            COMP6841 Something Awesome
+          </Text>
+          <ColorModeButton _hover={{ bg: "teal.muted" }} />
+        </HStack>
       </Flex>
       {isMenuOpen && (
         <Box
           py={4}
           bg="teal.900"
           textAlign="center"
-          display={{ base: "block", md: "none" }}
+          display={{ base: "block", lg: "none" }}
         >
           <HStack as={"nav"} direction="column" gap={4}>
             {Links.map((link) => (

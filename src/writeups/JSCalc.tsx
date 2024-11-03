@@ -9,7 +9,7 @@ import {
   Stack,
   Text,
 } from "@chakra-ui/react";
-import { WriteupType } from ".";
+import { ReflectionItem, WriteupType } from "./";
 import { Easy, JavaScript, RCE } from "./tags";
 import { ImageWithCaption } from "@/components/ImageWithCaption";
 import { Codeblock } from "@/components/Codeblock";
@@ -17,12 +17,12 @@ import { GrVulnerability } from "react-icons/gr";
 import { FaFilterCircleXmark } from "react-icons/fa6";
 import { FaHeadSideVirus } from "react-icons/fa6";
 
-const reflectionItems = [
+const reflectionItems: ReflectionItem[] = [
   {
     value: "eval-bad",
     icon: <GrVulnerability />,
     title: (
-      <Heading>
+      <Heading fontSize="20px" fontWeight={800}>
         Using <Code size="lg">eval()</Code> is probably a bad idea
       </Heading>
     ),
@@ -104,6 +104,7 @@ export const JSCalc: WriteupType = {
   authorLink: "https://app.hackthebox.com/users/107",
   challengeLink: "https://app.hackthebox.com/challenges/jscalc",
   tags: [Easy, JavaScript, RCE],
+  timeTaken: "30 minutes",
   synopsis:
     "A simple calculator that is poorly designed (using eval) and is vulnerable to a client-side attack.",
   content: (
@@ -181,11 +182,16 @@ try {
       <AccordionRoot collapsible defaultValue={["info"]} variant="enclosed">
         {reflectionItems.map((item) => (
           <AccordionItem key={item.value} value={item.value} py={2}>
-            <AccordionItemTrigger>
+            <AccordionItemTrigger
+              cursor="pointer"
+              fontWeight={800}
+              textAlign="left"
+              fontSize="20px"
+            >
               <Icon fontSize="28px" color="teal">
                 {item.icon}
               </Icon>
-              <Heading>{item.title}</Heading>
+              {item.title}
             </AccordionItemTrigger>
             <AccordionItemContent>{item.content}</AccordionItemContent>
           </AccordionItem>

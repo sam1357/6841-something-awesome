@@ -6,11 +6,14 @@ import {
   AccordionRoot,
 } from "@/components/ui/accordion";
 import { FaFish } from "react-icons/fa";
-import { FaArrowsTurnToDots } from "react-icons/fa6";
+import { FaArrowsTurnToDots, FaCode } from "react-icons/fa6";
+import React from "react";
+import { BiCode } from "react-icons/bi";
 
 export enum AccordionType {
   RED_HERRING,
   SIDETRACK,
+  CODE,
 }
 
 export default function CustomAccordion({
@@ -20,7 +23,7 @@ export default function CustomAccordion({
 }: {
   type: AccordionType;
   title: string;
-  children: JSX.Element[];
+  children: React.ReactNode;
 }) {
   let icon: JSX.Element;
   let colour: string;
@@ -37,6 +40,11 @@ export default function CustomAccordion({
       colour = "green";
       titleType = "Sidetrack";
       break;
+    case AccordionType.CODE:
+      icon = <FaCode />;
+      colour = "purple";
+      titleType = "Code";
+      break;
   }
 
   return (
@@ -48,7 +56,7 @@ export default function CustomAccordion({
       size="lg"
     >
       <AccordionItem value={title}>
-        <AccordionItemTrigger>
+        <AccordionItemTrigger cursor="pointer">
           <HStack gap={2}>
             <Icon fontSize="xl" color={colour}>
               {icon}

@@ -1,10 +1,14 @@
 import { TagInfo } from "@/writeups/tags";
-import { HStack } from "@chakra-ui/react";
+import { Flex, FlexProps } from "@chakra-ui/react";
 import { Tag } from "@/components/ui/tag";
 
-export function Tags({ tags }: { tags: TagInfo[] }) {
+interface TagProps extends FlexProps {
+  tags: TagInfo[];
+}
+
+export function Tags({ tags, ...rest }: TagProps) {
   return (
-    <HStack gap={2}>
+    <Flex flexWrap="wrap" gap={2} {...rest}>
       {tags.map((tag, i) => (
         <Tag
           key={i}
@@ -16,6 +20,6 @@ export function Tags({ tags }: { tags: TagInfo[] }) {
           {tag.name}
         </Tag>
       ))}
-    </HStack>
+    </Flex>
   );
 }

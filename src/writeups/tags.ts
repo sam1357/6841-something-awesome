@@ -63,12 +63,27 @@ export const SSTI: TagInfo = {
   color: "blue",
 };
 
-export const PathTravesal: TagInfo = {
+export const PathTraversal: TagInfo = {
   name: "Path Traversal",
   color: "blue",
 };
 
 export const RainbowTable: TagInfo = {
   name: "Rainbow Table",
+  color: "blue",
+};
+
+export const Serialization: TagInfo = {
+  name: "Serialization",
+  color: "blue",
+};
+
+export const POPChain: TagInfo = {
+  name: "POP Chain",
+  color: "blue",
+};
+
+export const ACL: TagInfo = {
+  name: "ACL",
   color: "blue",
 };

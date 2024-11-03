@@ -10,8 +10,9 @@ import {
   Link,
   Text,
   Button,
+  HStack,
 } from "@chakra-ui/react";
-import { FaArrowUp } from "react-icons/fa";
+import { FaArrowUp, FaClock } from "react-icons/fa";
 import {
   BreadcrumbCurrentLink,
   BreadcrumbLink,
@@ -106,6 +107,10 @@ const WriteupWrapper: FC<WriteupWrapperProps> = ({ writeup }) => {
               {writeup.author} <LuExternalLink />
             </Link>
           </Text>
+          <HStack>
+            <FaClock />
+            <Text>{writeup.timeTaken}</Text>
+          </HStack>
           <Tags tags={writeup.tags} />
           <Separator />
           <Box>{writeup.content}</Box>
@@ -115,16 +120,21 @@ const WriteupWrapper: FC<WriteupWrapperProps> = ({ writeup }) => {
           </Text>
           <Box>{writeup.reflection}</Box>
           <Separator />
-          <Flex justifyContent="space-between">
+          <Flex
+            justifyContent={{ base: "center", md: "space-between" }}
+            flexDirection={{ base: "column", md: "row" }}
+            gap={{ base: 4, md: 0 }}
+            flexWrap="wrap"
+          >
             {prevWriteup ? (
               <PrevOrNext writeup={prevWriteup} type="Last" />
             ) : (
-              <Box flex="1" />
+              <Box flex="1" display={{ base: "none", md: "flex" }} />
             )}
             {nextWriteup ? (
               <PrevOrNext writeup={nextWriteup} type="Next" />
             ) : (
-              <Box flex="1" />
+              <Box flex="1" display={{ base: "none", md: "flex" }} />
             )}
           </Flex>
         </Flex>

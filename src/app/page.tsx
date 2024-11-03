@@ -79,7 +79,7 @@ function Cards() {
                   <Heading size="xl">{card.title}</Heading>
                   {card.isExternal && <LuExternalLink />}
                 </HStack>
-                <Text fontSize="md" color="gray.100" fontWeight={100}>
+                <Text fontSize="md" fontWeight={100}>
                   {card.description}
                 </Text>
               </Flex>
@@ -125,10 +125,13 @@ export default function Home() {
           fontSize="sm"
           fontWeight={200}
           fontStyle="italic"
-          color="gray.400"
+          color={{ base: "gray.900", _dark: "gray.400" }}
         >
           The idea of this project was heavily inspired by Jason Liu's{" "}
-          <Link href="https://stegosaurus21.github.io/6841-hack-the-web/">
+          <Link
+            href="https://stegosaurus21.github.io/6841-hack-the-web/"
+            target="_blank"
+          >
             project <LuExternalLink />
           </Link>
           . However all write-ups, challenges, reflections as well we this

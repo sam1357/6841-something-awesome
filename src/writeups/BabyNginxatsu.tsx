@@ -1,34 +1,29 @@
 import {
   Stack,
   Code,
-  AccordionRoot,
-  AccordionItem,
-  AccordionItemTrigger,
   Text,
-  Icon,
   Heading,
+  AccordionItem,
   AccordionItemContent,
-  Link,
+  AccordionItemTrigger,
+  AccordionRoot,
+  Icon,
 } from "@chakra-ui/react";
-import { WriteupType } from ".";
-import { Medium, PHP, PathTravesal, RainbowTable } from "./tags";
+import { ReflectionItem, WriteupType } from "./";
+import { Medium, PHP, PathTraversal, RainbowTable } from "./tags";
 import { FaLock, FaFish, FaTools } from "react-icons/fa";
 import { ImageWithCaption } from "@/components/ImageWithCaption";
 import CustomAccordion, { AccordionType } from "@/components/CustomAccordion";
-import { LuExternalLink, LuServerOff } from "react-icons/lu";
+import { LuServerOff } from "react-icons/lu";
 import { PiPasswordFill } from "react-icons/pi";
-import {} from "react-icons/fa";
 import { Codeblock } from "@/components/Codeblock";
+import ExternalLink from "@/components/ExternalLink";
 
-const reflectionItems = [
+const reflectionItems: ReflectionItem[] = [
   {
     value: "misconfigured-servers",
     icon: <LuServerOff />,
-    title: (
-      <Heading>
-        Be careful with misconfigured servers and exposed directories!
-      </Heading>
-    ),
+    title: "Be careful of misconfigured servers and exposed directories",
     content: (
       <Stack gap={1}>
         <Text>
@@ -145,7 +140,8 @@ export const BabyNginxatsu: WriteupType = {
   author: "makelaris",
   authorLink: "https://app.hackthebox.com/users/107",
   challengeLink: "https://app.hackthebox.com/challenges/baby%2520nginxatsu",
-  tags: [Medium, PHP, PathTravesal, RainbowTable],
+  tags: [Medium, PHP, PathTraversal, RainbowTable],
+  timeTaken: "1 hour",
   synopsis:
     "A website that dynamically generates Nginx configuration files based on user input. What could go wrong?",
   content: (
@@ -175,9 +171,10 @@ export const BabyNginxatsu: WriteupType = {
         </Text>
         <Text>
           Using some common tricks from this{" "}
-          <Link href="https://book.hacktricks.xyz/pentesting-web/sql-injection">
-            page <LuExternalLink />
-          </Link>
+          <ExternalLink
+            href="https://book.hacktricks.xyz/pentesting-web/sql-injection"
+            title="page"
+          />
           , I tried inputting some into the username field. For example:
         </Text>
         <Codeblock language="sql" code="' or '1'='1" />
@@ -212,7 +209,7 @@ server {
 
     # We sure hope so that we don't spill any secrets
     # within the open directory on /storage
-    
+
     location /storage {
         autoindex on;
     }
@@ -259,9 +256,10 @@ server {
       </Text>
       <Text>
         Using{" "}
-        <Link href="https://crackstation.net/">
-          https://crackstation.net/ <LuExternalLink />
-        </Link>
+        <ExternalLink
+          href="https://crackstation.net/"
+          title="https://crackstation.net/"
+        />
         , I put in the hash of the password, and lo-and-behold - the password
         was revealed to be <Code>adminadmin1</Code>. Logging in with these
         credentials...
@@ -275,11 +273,16 @@ server {
       <AccordionRoot collapsible defaultValue={["info"]} variant="enclosed">
         {reflectionItems.map((item) => (
           <AccordionItem key={item.value} value={item.value} py={2}>
-            <AccordionItemTrigger>
+            <AccordionItemTrigger
+              cursor="pointer"
+              fontWeight={800}
+              textAlign="left"
+              fontSize="20px"
+            >
               <Icon fontSize="28px" color="teal">
                 {item.icon}
               </Icon>
-              <Heading>{item.title}</Heading>
+              {item.title}
             </AccordionItemTrigger>
             <AccordionItemContent>{item.content}</AccordionItemContent>
           </AccordionItem>

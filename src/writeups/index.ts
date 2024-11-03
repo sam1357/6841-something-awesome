@@ -17,6 +17,14 @@ export type WriteupType = {
   synopsis: string;
   reflection: JSX.Element;
   content: JSX.Element;
+  timeTaken: string;
+};
+
+export type ReflectionItem = {
+  value: string;
+  icon: JSX.Element;
+  title: JSX.Element | string;
+  content: JSX.Element;
 };
 
 export const WriteupInfo: Record<string, WriteupType> = {

@@ -1,16 +1,22 @@
-import { WriteupType } from "@/writeups";
-import { Card, Flex, HStack, Heading, Text } from "@chakra-ui/react";
+import { WriteupType } from "@/writeups/index";
+import {
+  Card,
+  CardRootProps,
+  Flex,
+  HStack,
+  Heading,
+  Text,
+} from "@chakra-ui/react";
 import { usePathname, useRouter } from "next/navigation";
 import { FaArrowLeft, FaArrowRight } from "react-icons/fa";
 import { Tags } from "./Tags";
 
-export function PrevOrNext({
-  writeup,
-  type,
-}: {
+interface PrevOrNextProps extends CardRootProps {
   writeup: WriteupType;
   type: string;
-}) {
+}
+
+export function PrevOrNext({ writeup, type, ...rest }: PrevOrNextProps) {
   const curPath = usePathname().split("/").slice(0, -1).join("/");
   const router = useRouter();
 
@@ -27,6 +33,7 @@ export function PrevOrNext({
           router.push(`${curPath}/${writeup.slug}`);
         }
       }}
+      {...rest}
     >
       <Card.Header>
         <Flex direction="column" gap={0}>
@@ -66,7 +73,7 @@ export function SummaryCard({ writeup }: { writeup: WriteupType }) {
           <Heading size="xl">{writeup.title}</Heading>
         </Flex>
         <Tags tags={writeup.tags} />
-        <Text fontSize="md" color="gray.100" fontWeight={100}>
+        <Text fontSize="md" fontWeight={100}>
           {writeup.synopsis}
         </Text>
       </Card.Header>
