@@ -26,7 +26,7 @@ const Links: Link[] = [
     href: "/reflections",
   },
   {
-    name: "Methodology & Tips",
+    name: "Method + Tips",
     href: "/method",
   },
 ];
@@ -102,7 +102,7 @@ export default function Navbar() {
       {isMenuOpen && (
         <Box
           py={4}
-          bg="teal.900"
+          backgroundColor={{ base: "gray.muted", _dark: "teal.900" }}
           textAlign="center"
           display={{ base: "block", lg: "none" }}
         >
