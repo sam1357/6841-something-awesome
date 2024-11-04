@@ -156,7 +156,7 @@ export default function Reflections() {
             </Text>
             <StepsRoot defaultValue={1} count={3} w="100%" colorPalette="teal">
               <StepsList>
-                <StepsItem index={0} title="Reconnaissance & Research" />
+                <StepsItem index={0} title="Recon" />
                 <StepsItem index={1} title="Planning" />
                 <StepsItem index={2} title="Execution" />
               </StepsList>
