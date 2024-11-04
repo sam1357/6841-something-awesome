@@ -292,6 +292,7 @@ invalid_chars = ["{{", "}}", ".", "_", "[", "]","\', "x"]
           </Text>
           <Codeblock
             language="python"
+            widthOffset="70px"
             code={`
 ''.__class__.mro()[1].__subclasses__()[396]('cat flag.txt',shell=True,stdout=-1).communicate()[0].strip()
           `}
@@ -392,38 +393,37 @@ invalid_chars = ["{{", "}}", ".", "_", "[", "]","\', "x"]
           <Text>
             From the website, we know that three things must be present for this
             exploit to work:
-            <List.Root>
-              <List.Item>A server action is defined</List.Item>
-              <List.Item>
-                The server action redirects to a URL starting with{" "}
-                <Code>/</Code>
-              </List.Item>
-              <List.Item>
-                We are able to specify a custom <Code>Host</Code> header while
-                accessing the application.
-              </List.Item>
-            </List.Root>
-            <Text>
-              We do in fact have all three of these things, so this should be a
-              go-ahead.
-            </Text>
-            <Text>
-              The main logic that NextJS follows when calling{" "}
-              <Code>redirect</Code> is as follows, summarised from the AssetNote
-              blog:
-            </Text>
-            <List.Root>
-              <List.Item>
-                The server will first do a preflight HEAD request to the URL,
-                checking if it will return a <Code>Content-Type</Code> of{" "}
-                <Code>RSC_CONTENT_TYPE_HEADER</Code> (i.e. text/x-component).
-              </List.Item>
-              <List.Item>
-                The content of the GET request to the URL specified will then be
-                returned in the response.
-              </List.Item>
-            </List.Root>
           </Text>
+          <List.Root>
+            <List.Item>A server action is defined</List.Item>
+            <List.Item>
+              The server action redirects to a URL starting with <Code>/</Code>
+            </List.Item>
+            <List.Item>
+              We are able to specify a custom <Code>Host</Code> header while
+              accessing the application.
+            </List.Item>
+          </List.Root>
+          <Text>
+            We do in fact have all three of these things, so this should be a
+            go-ahead.
+          </Text>
+          <Text>
+            The main logic that NextJS follows when calling{" "}
+            <Code>redirect</Code> is as follows, summarised from the AssetNote
+            blog:
+          </Text>
+          <List.Root>
+            <List.Item>
+              The server will first do a preflight HEAD request to the URL,
+              checking if it will return a <Code>Content-Type</Code> of{" "}
+              <Code>RSC_CONTENT_TYPE_HEADER</Code> (i.e. text/x-component).
+            </List.Item>
+            <List.Item>
+              The content of the GET request to the URL specified will then be
+              returned in the response.
+            </List.Item>
+          </List.Root>
           <Text>
             So essentially, the NextJS server will fetch the result of the
             redirect server-side, and then return the content to the client.

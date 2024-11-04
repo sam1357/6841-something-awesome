@@ -92,7 +92,11 @@ export default function Navbar() {
           </HStack>
         </HStack>
         <HStack gap={4}>
-          <VStack gap={0} display={{ base: "none", sm: "flex" }}>
+          <VStack
+            gap={0}
+            display={{ base: "none", sm: "flex" }}
+            alignItems="end"
+          >
             <Text fontSize="lg" fontWeight={600}>
               COMP6841 Something Awesome
             </Text>

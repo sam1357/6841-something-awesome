@@ -637,13 +637,13 @@ func verify(code, ip string) (bool, string, error) {
 	req.Header.Add("Content-Type", "application/x-www-form-urlencoded")
 	req.Header.Add("X-Forwarded-For", ip)
 
-	jar, err := cookiejar.New(nil)
+	cookies, err := cookiejar.New(nil)
 	if err != nil {
 		return false, "", err
 	}
 
 	client := &http.Client{
-		Jar: jar,
+		Jar: cookies,
 	}
 
 	res, err := client.Do(req)
@@ -653,7 +653,7 @@ func verify(code, ip string) (bool, string, error) {
 
 	defer res.Body.Close()
 
-	if res.StatusCode == http.StatusBadRequest {
+	if res.StatusCode != http.OK {
 		return false, "", nil
 	}
 
