@@ -1,6 +1,12 @@
 import Navbar from "@/components/Navbar";
 import { Provider } from "@/components/ui/provider";
 import { Box } from "@chakra-ui/react";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "COMP6841 SAP | z5418112",
+  description: "Welcome to Sam's Something Awesome COMP6841 Project!",
+};
 
 export default function RootLayout({
   children,

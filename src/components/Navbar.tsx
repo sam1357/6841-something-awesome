@@ -1,7 +1,15 @@
 "use client";
 
 import { useState } from "react";
-import { Box, Flex, HStack, IconButton, Link, Text } from "@chakra-ui/react";
+import {
+  Box,
+  Flex,
+  HStack,
+  IconButton,
+  Link,
+  Text,
+  VStack,
+} from "@chakra-ui/react";
 import { usePathname } from "next/navigation";
 import { GiHamburgerMenu } from "react-icons/gi";
 import { IoCloseOutline } from "react-icons/io5";
@@ -24,10 +32,6 @@ const Links: Link[] = [
   {
     name: "Reflections",
     href: "/reflections",
-  },
-  {
-    name: "Method + Tips",
-    href: "/method",
   },
 ];
 
@@ -88,14 +92,14 @@ export default function Navbar() {
           </HStack>
         </HStack>
         <HStack gap={4}>
-          <Text
-            fontSize="lg"
-            pb={1}
-            fontWeight={600}
-            display={{ base: "none", sm: "block" }}
-          >
-            COMP6841 Something Awesome
-          </Text>
+          <VStack gap={0} display={{ base: "none", sm: "flex" }}>
+            <Text fontSize="lg" fontWeight={600}>
+              COMP6841 Something Awesome
+            </Text>
+            <Text fontSize="sm" fontWeight={200}>
+              z5418112 (Sam Zheng)
+            </Text>
+          </VStack>
           <ColorModeButton _hover={{ bg: "teal.muted" }} />
         </HStack>
       </Flex>

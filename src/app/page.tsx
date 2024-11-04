@@ -13,7 +13,6 @@ import {
   Separator,
   LinkOverlay,
 } from "@chakra-ui/react";
-import { MdTipsAndUpdates } from "react-icons/md";
 import { FaBrain, FaCode, FaPencilAlt } from "react-icons/fa";
 import { LuExternalLink } from "react-icons/lu";
 
@@ -29,7 +28,7 @@ const cardDetails: cardDetail[] = [
   {
     title: "Reflections",
     description:
-      "A summary of the reflections on the challenges I have completed, and what I have learnt",
+      "A summary of the reflections on the challenges I have completed, and what I have learnt. Also includes the methodology that I took to solve the challenges.",
     icon: <FaBrain size="30px" color="teal" />,
     href: "/reflections",
   },
@@ -38,13 +37,6 @@ const cardDetails: cardDetail[] = [
     description: "Details of the challenges I have completed and the writeups",
     icon: <FaPencilAlt size="30px" color="green" />,
     href: "/challenges",
-  },
-  {
-    title: "Methodology and Tips",
-    description:
-      "Learn more about the overall methodology I went about doing these challenges, and tips and tricks for solving these for yourself",
-    icon: <MdTipsAndUpdates size="30px" color="purple" />,
-    href: "/method",
   },
   {
     title: "Try it yourself!",
@@ -127,7 +119,7 @@ export default function Home() {
           fontStyle="italic"
           color={{ base: "gray.900", _dark: "gray.400" }}
         >
-          The idea of this project was heavily inspired by Jason Liu's{" "}
+          The idea of this project was inspired by Jason Liu's{" "}
           <Link
             href="https://stegosaurus21.github.io/6841-hack-the-web/"
             target="_blank"

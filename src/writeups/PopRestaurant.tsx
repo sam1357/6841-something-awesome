@@ -116,7 +116,7 @@ export const PopRestaurant: WriteupType = {
         with PHP, so that was a bit of a learning curve for me. As an aside - I
         have no idea why this challenge was rated as "Easy" on HackTheBox, it
         was anything but. This challenge was completed over several evenings -
-        totalling around 7-8 hours.
+        totalling around 6-7 hours.
       </Text>
       <ImageWithCaption
         imagePath="/images/pop-1.png"
@@ -243,21 +243,21 @@ RUN bash -c 'FLAG_NAME=$(head /dev/urandom | tr -dc A-Za-z0-9 | head -c 12) && c
         Looking back in the codebase, I notice that the three different food
         models that I mentioned having strange methods - these were all actually
         magic methods.
-        <List.Root>
-          <List.Item>
-            <Code>__get()</Code> - This method is called when something tries to
-            access a property that is not accessible or does not exist.
-          </List.Item>
-          <List.Item>
-            <Code>__destruct()</Code> - This method is called when an object is
-            destroyed, and can be used to perform cleanup tasks.
-          </List.Item>
-          <List.Item>
-            <Code>__invoke()</Code> - This method is called when an object is
-            called as a function.
-          </List.Item>
-        </List.Root>
       </Text>
+      <List.Root>
+        <List.Item>
+          <Code>__get()</Code> - This method is called when something tries to
+          access a property that is not accessible or does not exist.
+        </List.Item>
+        <List.Item>
+          <Code>__destruct()</Code> - This method is called when an object is
+          destroyed, and can be used to perform cleanup tasks.
+        </List.Item>
+        <List.Item>
+          <Code>__invoke()</Code> - This method is called when an object is
+          called as a function.
+        </List.Item>
+      </List.Root>
       <Separator />
       <Heading fontWeight={800} fontSize="2xl" color="teal">
         Planning the chain

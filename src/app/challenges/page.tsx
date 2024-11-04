@@ -27,7 +27,7 @@ export default function Challenges() {
             the way I went about solving them over time.
           </Text>
           <Separator />
-          <Heading size="2xl">Difficulty Ratings</Heading>
+          <Heading size="2xl">Tags Legend</Heading>
           <Grid templateColumns="repeat(8, 1fr)" gap={3}>
             <Tag
               size="xl"
@@ -71,6 +71,31 @@ export default function Challenges() {
                 Challenges that were hard took a lot of research, and/or were
                 solved over the course of a few days. They often involved steps,
                 each of which required a lot of effort to solve.
+              </Text>
+            </GridItem>
+            <Tag
+              size="xl"
+              colorPalette="purple"
+              rounded="2xl"
+              justifyContent="center"
+            >
+              Language
+            </Tag>
+            <GridItem colSpan={7}>
+              <Text>The main languages that were used in the challenge.</Text>
+            </GridItem>
+            <Tag
+              size="xl"
+              colorPalette="blue"
+              rounded="2xl"
+              justifyContent="center"
+            >
+              Attack Type
+            </Tag>
+            <GridItem colSpan={7}>
+              <Text>
+                The main type of attack that was used in the challenge. This
+                could be anything from a buffer overflow to a SQL injection.
               </Text>
             </GridItem>
           </Grid>
